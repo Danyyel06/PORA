@@ -1,0 +1,21 @@
+# Virtual environment
+venv/
+.venv/ # In case you accidentally created this again or your IDE creates it
+
+# Database file (SQLite)
+instance/
+*.db
+
+# Python cache and compiled files
+__pycache__/
+*.pyc
+
+# Environment variables (if you start using .env files later)
+.env
+
+# Common IDE files
+.vscode/ # For VS Code
+.idea/   # For PyCharm
+
+# Logs
+*.log

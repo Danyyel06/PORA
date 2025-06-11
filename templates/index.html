@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PORA Academy</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,33 +31,44 @@
             </div>
 
             <div class="bottom-image-placeholder">
-                <img src="images/Frame 1.svg" alt="Dashboard Preview">
+                <img src="{{ url_for('static', filename='images/Frame 1.svg)}}" alt="Dashboard Preview">
             </div>
         </div>
 
 
 
 
-        <div class="card" style="background-color: #e8dacc !important;">
-            <div class="missionvision-section">
-                <div class="mission-left">
-                    <p>OUR MISSION</p>
-                    <p>Pursuing, overtaking and recovering all via the platform of technology. PORA Academy stands out
-                        as a learning and development platform. </p>
-                    <p> We are aimed at pursuing recovery of the gates for the
-                        kingdom via the platform of Technology capabilities empowerment.</p>
-                    <p> We are building an ecosystem of
-                        Kingdom Technology evangelists and missionaries.</p>
-                    <img src="images/mission.gif" alt="" style="width: 600px; height: 600px;">
+        <div class="card" style="background-color: #f8f8f8 !important;">
+            <section class="about-section">
+                <div class="about-intro">
+                    <h2 class="about-heading">Our Vision </h2>
                 </div>
-                <div class="vision-right">
-                    <img src="images/Vision2.gif" alt="" style="width: 600px; height: 600px;">
-                    <p>OUR VISION</p>
-                    <p>To raise competent Kingdom ambassadors for Christ in ICT. To upskill and reskill disciples who
-                        will align with this Kingdom mandate. To engage in Kingdom-led ICT projects.</p>
+                <div class="about-details">
+                    <p>
+                        To raise competent Kingdom ambassadors for Christ in ICT. To upskill and reskill disciples who
+                        will align with this Kingdom mandate. To engage in Kingdom-led ICT projects.
+                    </p>
                 </div>
+            </section>
 
-            </div>
+
+
+
+            <section class="mission-section">
+                <div class="about-intro">
+                    <h2 class="mission-heading">Our Mission</h2>
+                </div>
+                <div class="mission-details">
+                    <p>Pursuing, overtaking and recovering all via the platform of technology. PORA Academy stands out
+                        as a learning and development platform <br>
+                     We are aimed at pursuing recovery of the gates for the
+                        kingdom via the platform of Technology capabilities empowerment. <br>
+                    We are building an ecosystem of
+                        Kingdom Technology evangelists and missionaries.</p>
+                </div>
+            </section>
+
+           
 
             <div class="speaker-section">
                 <div class="speaker-list">
@@ -90,24 +101,36 @@
 
                 <div class="speaker-image-display">
                     <img src="" class="speaker-photo active-photo" id="default-speaker-photo">
-                    <img src="images/musibau-Photoroom.png" alt="Guillermo Rauch" class="speaker-photo"
+                    <img src="{{ url_for('static', filename='images/musibau-Photoroom.png')}}" alt="Guillermo Rauch" class="speaker-photo"
                         id="musibau-lasisi-photo">
-                    <img src="images/usha-Photoroom.png" alt="Jeanne Grosser" class="speaker-photo"
+                    <img src="{{ url_for('static', filename='images/usha-Photoroom.png')}}" alt="Jeanne Grosser" class="speaker-photo"
                         id="ushaseer-tembe-photo">
-                    <img src="images/chegbe-Photoroom.png" alt="Jeanne Grosser" class="speaker-photo"
+                    <img src="{{ url_for('static', filename='images/chegbe-Photoroom.png')}}" alt="Jeanne Grosser" class="speaker-photo"
                         id="ojochegbe-daniel-photo">
-                    <img src="images/ayo-Photoroom.png" alt="Jeanne Grosser" class="speaker-photo"
+                    <img src="{{ url_for('static', filename='images/ayo-Photoroom.png')}}" alt="Jeanne Grosser" class="speaker-photo"
                         id="ayomide-osuntoye-photo">
-                    <img src="images/brice-Photoroom.png" alt="Jeanne Grosser" class="speaker-photo"
+                    <img src="{{ url_for('static', filename='images/brice-Photoroom.png')}}" alt="Jeanne Grosser" class="speaker-photo"
                         id="brice-mehelo-photo">
-                    <img src="images/sam-Photoroom.png" alt="Jeanne Grosser" class="speaker-photo"
+                    <img src="{{ url_for('static', filename='images/sam-Photoroom.png')}}" alt="Jeanne Grosser" class="speaker-photo"
                         id="samson-adejumo-photo">
 
                 </div>
             </div>
 
 
-
+            <section class="registration">
+                <div class="registration-visual">
+                    <img src="{{ url_for('static', filename='images/Calendar (3).png')}}" alt="">
+                </div>
+                <div class="registration-content">
+                    <h1 class="registration-title">Cohort 6.0 is Coming Soon</h1>
+                    <p class="registration-description">
+                        Embark on a 6-month journey of innovation and skill-building. At PORA Tech Academy, we're
+                        committed to equipping you for the future. Join us in Cohort 5.0 and unlock your potential.
+                    </p>
+                    <a href="contact-us.html" class="learn-more-btn">Reserve A Seat</a>
+                </div>
+            </section>
 
 
 
@@ -182,48 +205,48 @@
                     <div class="cards-container">
                         <div class="service-card" style="background-color: #DBC2FF;">
                             <div class="card-icon">
-                                <img src="images/artificial-intelligence.png" alt="">
+                                <img src="{{ url_for('static', filename='images/artificial-intelligence.png')}}" alt="">
                             </div>
                             <h3 class="card-title">Data Science & Artificial Intelligence</h3>
                             <p class="card-description">
                                 A track that provides an overview of data science concepts, including data analysis,
                                 data visualization, and machine learning.
                             </p>
-                            <a href="#"><img src="images/arrow-right.svg" alt="" class="service-button"></a>
+                            <a href="#"><img src="{{ url_for('static', filename='images/arrow-right.svg')}}" alt="" class="service-button"></a>
 
                         </div>
 
                         <div class="service-card" style="background-color: #E8E99A;">
                             <div class="card-icon">
-                                <img src="images/inventory.png" alt="">
+                                <img src="{{ url_for('static', filename='images/inventory.png')}}" alt="">
                             </div>
                             <h3 class="card-title"> Software Product Management</h3>
                             <p class="card-description">
                                 A track focused on understanding the principles of software product management and how
                                 to bring software products to market
                             </p>
-                            <a href="#"><img src="images/arrow-right.svg" alt="" class="service-button"></a>
+                            <a href="#"><img src="{{ url_for('static', filename='images/arrow-right.svg')}}" alt="" class="service-button"></a>
 
                         </div>
 
 
                         <div class="service-card" style="background-color: #ECDFFF;">
                             <div class="card-icon">
-                                <img src="images/project-management.png" alt="">
+                                <img src="{{ url_for('static', filename='images/project-management.png')}}" alt="">
                             </div>
                             <h3 class="card-title"> Project Manangement</h3>
                             <p class="card-description">
                                 A compulsory course that provides an introduction to project management principles and
                                 methodologies.
                             </p>
-                            <a href="#"><img src="images/arrow-right.svg" alt="" class="service-button"></a>
+                            <a href="#"><img src="{{ url_for('static', filename='images/arrow-right.svg')}}" alt="" class="service-button"></a>
 
                         </div>
 
 
                         <div class="service-card" style="background-color: #F6F8C2;">
                             <div class="card-icon">
-                                <img src="images/settings.png" alt="">
+                                <img src="{{ url_for('static', filename='images/settings.png')}}" alt="">
                             </div>
                             <h3 class="card-title">DevOPs</h3>
                             <p class="card-description">
@@ -231,77 +254,77 @@
                                 collaboration and automation for efficient, continuous software delivery, enhancing
                                 speed, quality, and adaptability.
                             </p>
-                            <a href="#"><img src="images/arrow-right.svg" alt="" class="service-button"></a>
+                            <a href="#"><img src="{{ url_for('static', filename='images/arrow-right.svg')}}" alt="" class="service-button"></a>
 
                         </div>
 
 
                         <div class="service-card" style="background-color: #F8E2CF;">
                             <div class="card-icon">
-                                <img src="images/foreign-language.png" alt="">
+                                <img src="{{ url_for('static', filename='images/foreign-language.png')}}" alt="">
                             </div>
                             <h3 class="card-title">Foreign Languages</h3>
                             <p class="card-description">
                                 Foreign languages help to broaden perspectives, enabling cross-cultural communication.
                                 Learning any of them enhances cognitive skills.
                             </p>
-                            <a href="#"><img src="images/arrow-right.svg" alt="" class="service-button"></a>
+                            <a href="#"><img src="{{ url_for('static', filename='images/arrow-right.svg')}}" alt="" class="service-button"></a>
 
                         </div>
 
 
                         <div class="service-card" style="background-color: #EDF1D6;">
                             <div class="card-icon">
-                                <img src="images/software-developer.png" alt="">
+                                <img src="{{ url_for('static', filename='images/software-developer.png')}}" alt="">
                             </div>
                             <h3 class="card-title">Software Engineering (Mobile/Fullstack)</h3>
                             <p class="card-description">
                                 A track that focuses on the design, development, and delivery of software systems and
                                 applications.
                             </p>
-                            <a href="#"><img src="images/arrow-right.svg" alt="" class="service-button"></a>
+                            <a href="#"><img src="{{ url_for('static', filename='images/arrow-right.svg')}}" alt="" class="service-button"></a>
 
                         </div>
 
 
                         <div class="service-card" style="background-color: #F0F2BD;">
                             <div class="card-icon">
-                                <img src="images/consulting.png" alt="">
+                                <img src="{{ url_for('static', filename='images/consulting.png')}}" alt="">
                             </div>
                             <h3 class="card-title">Cyber security & IT Assurance </h3>
                             <p class="card-description">
                                 A track dedicated to understanding the principles of cyber security and how to secure
                                 and protect information systems.
                             </p>
-                            <a href="#"><img src="images/arrow-right.svg" alt="" class="service-button"></a>
+                            <a href="#"><img src="{{ url_for('static', filename='images/arrow-right.svg')}}" alt="" class="service-button"></a>
 
                         </div>
 
 
                         <div class="service-card" style="background-color: #FFDBC3;">
                             <div class="card-icon">
-                                <img src="images/testing.png" alt="">
+                                <img src="{{ url_for('static', filename='images/testing.png')}}" alt="">
                             </div>
                             <h3 class="card-title">Software Quality Assurance (QA) Engineering</h3>
                             <p class="card-description">
                                 This course covers the principles of software quality assurance and the methodologies
                                 for testing automation, ensuring high-quality software delivery.
                             </p>
-                            <a href="#"><img src="images/arrow-right.svg" alt="" class="service-button"></a>
+                            <a href="#"><img src="{{ url_for('static', filename='images/arrow-right.svg')}}" alt="" class="service-button"></a>
 
                         </div>
 
 
                         <div class="service-card" style="background-color: #FFFBDE;">
                             <div class="card-icon">
-                                <img src="images/ux-design.png" alt="">
+                                <img src="{{ url_for('static', filename='images/ux-design.png')}}" alt="">
                             </div>
                             <h3 class="card-title">UI UX | Product Design</h3>
                             <p class="card-description">
                                 A track dedicated to mastering the principles of UI/UX and product design, emphasizing
                                 user-centered design and effective strategies for bringing software products to market.
                             </p>
-                            <a href="#"><img src="images/arrow-right.svg" alt="" class="service-button"></a>
+                            <a href="#"><img src="{{ url_for('static', filename='images/arrow-right.svg')}}" alt="" class="service-button"></a>
 
                         </div>
                     </div>
@@ -309,12 +332,92 @@
 
 
             </section>
+
+
+
+
+            <div class="contact-us-container">
+                <div class="left-section">
+                    <h1>Connect with PORA Tech Academy</h1>
+                    <div class="checklist">
+                        <p><span>&#10003;</span>Inquiring about programs and curriculum.</p>
+                        <p><span>&#10003;</span>Exploring how to become a Kingdom ambassador in ICT.</p>
+                        <p><span>&#10003;</span> General questions about PORA Tech Academy.</p>
+                    </div>
+
+                </div>
+
+                <div class="right-section">
+                    <form>
+                        <div class="form-row">
+                            <input type="email" placeholder="Email" required style="display: block !important;">
+                            <input type="text" placeholder="First Name" required>
+                            <input type="text" placeholder="Last Name" required>
+                        </div>
+
+
+                        <textarea placeholder="Please describe your inquiry here (e.g., program interest, career goals in ICT, partnership proposal, or any other questions)... " required></textarea>
+                        <button type="submit" class="send-message-btn">Send message</button>
+                    </form>
+                    <p class="email-info">
+                        Or send us an email? <a href="mailto:tech@pora.academy">tech@pora.academy</a>
+                    </p>
+                </div>
+            </div>
+
+            <footer>
+                <div class="footer-top">
+                    <h3>Embark on a transformative journey into the cutting-edge world of technology with a global
+                        cohort.</h3>
+                    <a href="contact-us.html" class="get-in-touch-btn">Get in touch</a>
+                </div>
+                <div class="footer-divider"></div>
+                <div class="footer-main">
+                    <div class="footer-logo">
+                        <img src="{{ url_for('static', filename='images/logo-2.png')}}" alt="PORA Logo" width="200px" height="800px">
+                    </div>
+                    <div class="footer-links">
+                        <div class="link-column">
+                            <h2>Sitemap</h2>
+                            <a href="#">Home</a>
+                            <a href="#">About Us</a>
+                            <a href="#">Courses</a>
+                            <a href="#">Tutors</a>
+                            <a href="#">Contact Us</a>
+                        </div>
+                        <div class="link-column">
+                            <h2>Contact Us</h2>
+                            <a href="#">2349028162601 (WhatsApp Chat only)</a>
+                            <a href="#">2348056649453 (WhatsApp Chat only)</a>
+                            <a href="#">2347061193851 (WhatsApp Chat only)</a>
+                            <a href="#">2348024611363 (WhatsApp & Telegram Chat Only)</a>
+                        </div>
+                    </div>
+                    <div class="footer-newsletter">
+                        <p>Visit Our Social Media Platforms</p>
+
+                        <div class="social-icons">
+                            <a href="#"><img src="" alt="Instagram"></a>
+                            <a href="#"><img src="" alt="LinkedIn"></a>
+                            <a href="#"><img src="" alt="YouTube"></a>
+                            <a href="#"><img src="" alt="G-Mail"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>Copyright © 2022 - 2025 PORA Tech Academy</p>
+                </div>
+            </footer>
+
+
+
+
         </div>
 
 
     </div>
     </div>
-    <script src="script.js"></script>
+    <script src="{{url_for('static', filename = 'js/script.js')}}"></script>
 </body>
 
 </html>

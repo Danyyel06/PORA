@@ -1,0 +1,422 @@
+/* Basic Resets & Global Styles */
+body {
+    font-family: 'Inter', sans-serif; /* Recommended font, ensure it's imported or available */
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6; /* Light background for admin panel */
+    color: #333;
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    color: #2c3e50; /* Darker heading color */
+}
+
+a {
+    text-decoration: none;
+    color: #3498db; /* Blue link color */
+    transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+    color: #2980b9;
+}
+
+/* --- Admin Header --- */
+.admin-header {
+    background-color: #2c3e50; /* Dark blue/grey header */
+    color: #ffffff;
+    padding: 15px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.admin-header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.admin-header h1 {
+    margin: 0;
+    font-size: 1.8em;
+    color: #ffffff;
+}
+
+.admin-header nav a {
+    color: #ffffff;
+    margin-left: 25px;
+    font-weight: 500;
+}
+
+.admin-header nav a:hover {
+    color: #ecf0f1;
+}
+
+.admin-header .logout-btn {
+    background-color: #e74c3c; /* Red logout button */
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 0.9em;
+}
+
+.admin-header .logout-btn:hover {
+    background-color: #c0392b;
+    color: #ffffff;
+}
+
+/* --- Main Content Area --- */
+.admin-main-content {
+    max-width: 1200px;
+    margin: 30px auto; /* Spacing from header and bottom */
+    padding: 0 20px; /* Internal padding */
+}
+
+.admin-section {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px; /* Space between sections */
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.section-header h2 {
+    font-size: 1.8em;
+    margin: 0;
+}
+
+/* --- Form Elements (for filters, not full forms) --- */
+.text-input,
+.select-input {
+    width: 100%; /* Default to 100% in filter bar */
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box; /* Include padding in element's total width and height */
+    transition: border-color 0.2s ease-in-out;
+}
+
+.text-input:focus,
+.select-input:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+/* --- Buttons --- */
+.primary-button,
+.secondary-button,
+.action-button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.primary-button {
+    background-color: #27ae60; /* Green primary button */
+    color: #ffffff;
+}
+
+.primary-button:hover {
+    background-color: #229954;
+}
+
+.secondary-button {
+    background-color: #95a5a6; /* Grey secondary button */
+    color: #ffffff;
+}
+
+.secondary-button:hover {
+    background-color: #7f8c8d;
+}
+
+/* Action buttons for table rows */
+.action-button {
+    padding: 8px 12px;
+    font-size: 0.9em;
+    border-radius: 4px;
+    background-color: #ecf0f1; /* Light background */
+    color: #555;
+}
+
+.action-button:hover {
+    background-color: #dce0e1;
+}
+
+.edit-button { /* Reused for 'view' in contact-admin, if desired */
+    color: #2980b9;
+}
+.edit-button:hover {
+    background-color: #e6f2f9;
+}
+
+.delete-button {
+    color: #e74c3c;
+}
+.delete-button:hover {
+    background-color: #f9e6e4;
+}
+
+.reply-button {
+    color: #f39c12;
+}
+.reply-button:hover {
+    background-color: #fcf1e4;
+}
+
+.view-button {
+    color: #34495e;
+}
+.view-button:hover {
+    background-color: #eaf1f5;
+}
+
+.mark-attended-button,
+.mark-as-confirmed-btn {
+    color: #27ae60; /* Green */
+}
+.mark-attended-button:hover,
+.mark-as-confirmed-btn:hover {
+    background-color: #e6ffe6;
+}
+
+
+/* --- Filter Bar --- */
+.filter-bar {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+}
+
+.filter-bar .text-input,
+.filter-bar .select-input {
+    flex: 1; /* Allow inputs to grow */
+    min-width: 200px; /* Minimum width for inputs in a row */
+}
+
+
+/* --- Tables --- */
+.admin-table-container {
+    overflow-x: auto; /* Enable horizontal scroll for table on small screens */
+    border: 1px solid #eee;
+    border-radius: 8px;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse; /* Collapse table borders */
+    min-width: 700px; /* Ensure table doesn't get too narrow horizontally */
+}
+
+.admin-table th,
+.admin-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.admin-table th {
+    background-color: #f8f8f8;
+    font-weight: 600;
+    color: #444;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+.admin-table tbody tr:last-child td {
+    border-bottom: none; /* No border on the last row */
+}
+
+.admin-table tbody tr:hover {
+    background-color: #f5f5f5; /* Subtle hover effect on rows */
+}
+
+/* Status Badges */
+.status-badge {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.85em;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+/* Contact Message Statuses */
+.status-new {
+    background-color: #fffac2; /* Light yellow */
+    color: #f39c12; /* Orange */
+}
+.status-read {
+    background-color: #eaf1f5; /* Light grey-blue */
+    color: #34495e; /* Dark blue-grey */
+}
+.status-replied {
+    background-color: #e6ffe6; /* Light green */
+    color: #27ae60; /* Darker green */
+}
+
+/* Event Registration Statuses */
+.status-confirmed {
+    background-color: #e6ffe6; /* Light green */
+    color: #27ae60; /* Darker green */
+}
+.status-pending {
+    background-color: #fffac2; /* Light yellow */
+    color: #f39c12; /* Orange */
+}
+.status-attended {
+    background-color: #eaf1f5; /* Light grey-blue */
+    color: #34495e; /* Dark blue-grey */
+}
+.status-cancelled { /* In case you add this status */
+    background-color: #ffe6e6;
+    color: #e74c3c;
+}
+
+/* --- Modal (for Message/Registration Detail) --- */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto; /* 10% from the top and centered */
+    padding: 30px;
+    border: 1px solid #888;
+    width: 90%; /* Responsive width */
+    max-width: 650px; /* Max width */
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    position: relative;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #000;
+    text-decoration: none;
+}
+
+.message-details-content p,
+.registration-details-content p {
+    margin-bottom: 10px;
+}
+
+.message-details-content p strong,
+.registration-details-content p strong {
+    color: #555;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+    flex-wrap: wrap; /* Allow buttons to wrap */
+}
+
+/* Font Awesome Icon sizing for admin buttons */
+.primary-button .fas,
+.secondary-button .fas,
+.action-button .fas {
+    font-size: 0.9em;
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .admin-header-content {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+    .admin-header nav {
+        flex-direction: column;
+        width: 100%;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .admin-header nav a {
+        margin-left: 0;
+        width: fit-content;
+    }
+
+    .admin-main-content {
+        padding: 0 10px;
+    }
+
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    .section-header h2 {
+        font-size: 1.5em;
+    }
+    .filter-bar {
+        flex-direction: column;
+    }
+    .filter-bar .text-input,
+    .filter-bar .select-input {
+        min-width: unset;
+    }
+
+    .admin-table th,
+    .admin-table td {
+        padding: 10px;
+        font-size: 0.9em;
+    }
+
+    .modal-content {
+        margin: 5% auto;
+        width: 95%;
+        padding: 20px;
+    }
+
+    .modal-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .modal-actions button {
+        width: 100%;
+    }
+}

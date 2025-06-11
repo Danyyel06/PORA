@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us Page</title>
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/contact-us.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/style.css')}}">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-left">
+                <a href="index.html" class="logo">PORA ACADEMY - Cohort Registration Page</a>
+            </div>
+
+
+        </header>
+
+        <main class="main-content">
+            <div class="attendee-info-section">
+                <h2 class="section-title">
+                    Fill in the required Information
+                </h2>
+
+
+                <form class="attendee-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="first-name">FIRST NAME</label>
+                            <input type="text" id="first-name" value="" placeholder="FIRST NAME">
+                        </div>
+                        <div class="form-group">
+                            <label for="last-name">LAST NAME</label>
+                            <input type="text" id="last-name" value="" placeholder="LAST NAME">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="work-email">EMAIL</label>
+                            <input type="email" id="work-email" value="" placeholder="EMAIL">
+                        </div>
+
+                    </div>
+
+                    <div class="purchase-button-container">
+                        <a type="submit" class="complete-purchase-btn">
+                            Complete Registration
+                            <span class="price-tag"><img src="{{ url_for('static', filename='images/right-arrow (4).png')}}" alt="" width="30px" height="30px"></span>
+                        </a>
+                    </div>
+                </form>
+
+
+            </div>
+
+            <aside class="order-summary-section">
+                <div>
+                    <h2 class="section-title">Registration summary</h2>
+                </div>
+
+                <div>
+                    <p class="item-description">Registration ticket</p>
+                    <p class="item-price">FREE</p>
+                </div>
+                <div>
+                    <button class="checkout-btn">
+                        CHECKOUT
+                        <img src="{{ url_for('static', filename='images/shopping-cart (1).png')}}" alt="Cart Icon" class="cart-icon">
+                    </button>
+                </div>
+
+            </aside>
+        </main>
+    </div>
+    <footer>
+        <div class="footer-top">
+            <h3>Embark on a transformative journey into the cutting-edge world of technology with a global
+                cohort.</h3>
+            <a href="#" class="get-in-touch-btn">Get in touch</a>
+        </div>
+        <div class="footer-divider"></div>
+        <div class="footer-main">
+            <div class="footer-logo">
+                <img src="{{ url_for('static', filename='images/logo-2.png')}}" alt="PORA Logo" width="200px" height="800px">
+            </div>
+            <div class="footer-links">
+                <div class="link-column">
+                    <h2>Sitemap</h2>
+                    <a href="#">Home</a>
+                    <a href="#">About Us</a>
+                    <a href="#">Courses</a>
+                    <a href="#">Tutors</a>
+                    <a href="#">Contact Us</a>
+                </div>
+                <div class="link-column">
+                    <h2>Contact Us</h2>
+                    <a href="#">2349028162601 (WhatsApp Chat only)</a>
+                    <a href="#">2348056649453 (WhatsApp Chat only)</a>
+                    <a href="#">2347061193851 (WhatsApp Chat only)</a>
+                    <a href="#">2348024611363 (WhatsApp & Telegram Chat Only)</a>
+                </div>
+            </div>
+            <div class="footer-newsletter">
+                <p>Visit Our Social Media Platforms</p>
+
+                <div class="social-icons">
+                    <a href="#"><img src="https://via.placeholder.com/24/333/FFF?text=I" alt="Instagram"></a>
+                    <a href="#"><img src="https://via.placeholder.com/24/333/FFF?text=L" alt="LinkedIn"></a>
+                    <a href="#"><img src="https://via.placeholder.com/24/333/FFF?text=Y" alt="YouTube"></a>
+                    <a href="#"><img src="https://via.placeholder.com/24/333/FFF?text=Y" alt="G-Mail"></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright © 2022 - 2025 PORA Tech Academy</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,995 @@
+/* General Body and Font Styles */
+body {
+    font-family: 'Inter', sans-serif;
+    /* Using a modern sans-serif font */
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    /* Very light grey background as seen in the image */
+    color: #000;
+    /* Default text color */
+}
+
+.card {
+    position: sticky;
+}
+
+.card:nth-of-type(1) {
+    position: sticky;
+    top: 0px;
+    z-index: 10;
+}
+
+.card:nth-of-type(2) {
+    position: sticky;
+    top: 20px;
+    z-index: 20;
+}
+
+/* Hero Section Styling */
+.hero-section {
+    display: flex;
+    /* Use flexbox for horizontal alignment */
+    justify-content: space-between;
+    /* Pushes content to the edges */
+    align-items: center;
+    /* Vertically centers items */
+    min-height: 50vh;
+    /* Takes up a good portion of the viewport height */
+    padding: 0% 4rem;
+    /* Padding around the content, adjust as needed */
+    box-sizing: border-box;
+    /* Include padding in element's total width and height */
+}
+
+/* Left side of the Hero Section (Headings) */
+.hero-left p {
+    font-size: 4rem;
+    /* Large font size for impact */
+    font-weight: 500;
+    /* Bold font weight */
+    line-height: 1.2;
+    /* Tighter line spacing */
+    margin: 0;
+    /* Remove default margins */
+    color: #000;
+    /* Black color for the main heading */
+    letter-spacing: 1px;
+}
+
+.hero-left h1:last-child {
+    /* Styles for "PORA Academy" if you want it distinct */
+    color: #000;
+    /* Ensure it's black */
+}
+
+
+/* Right side of the Hero Section (Description and Button) */
+.hero-right {
+    max-width: 450px;
+    /* Constrain width for readability */
+    text-align: left;
+    /* Align text to the left */
+    margin-left: 3rem;
+    /* Space between left and right sections */
+
+
+}
+
+.hero-right p {
+    font-size: 0.9rem !important;
+    line-height: 1.6;
+    color: #000;
+    /* Slightly lighter grey for body text */
+    margin-bottom: 30px;
+    /* Space before the button */
+    font-size: 1rem;
+    padding-top: 5rem;
+    width: 19rem;
+    font-weight: 500;
+}
+
+/* Get Started Button Styling */
+.btn-get-started {
+    display: inline-flex;
+    /* Use flex to align text and arrow */
+    align-items: center;
+    /* Vertically center content */
+    background-color: #000;
+    /* Black background */
+    color: #fff;
+    /* White text */
+    padding: 15px 30px;
+    /* Padding inside the button */
+    border: none;
+    /* No border */
+    border-radius: 4px;
+    /* Slightly rounded corners */
+    text-decoration: none;
+    /* Remove underline for links */
+    font-size: 1em;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    /* Smooth transition for hover effect */
+}
+
+.btn-get-started:hover {
+    background-color: #333;
+    /* Darker grey on hover */
+}
+
+.btn-get-started .arrow-icon {
+    margin-left: 10px;
+    /* Space between text and arrow */
+    font-size: 1.2em;
+    /* Make arrow slightly larger */
+    transition: transform 0.3s ease;
+    /* Smooth transition for arrow move */
+}
+
+.btn-get-started:hover .arrow-icon {
+    transform: translateX(5px);
+    /* Move arrow slightly to the right on hover */
+}
+
+/* Placeholder for the bottom image (adjust as needed for your actual image) */
+.bottom-image-placeholder {
+    width: 100%;
+    /* Adjust width to match the image in the screenshot */
+    margin: 40px auto 0;
+    /* Center the image placeholder */
+    text-align: center;
+
+    min-height: 250px;
+    /* Minimum height to show it exists */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    /* Hide parts of the image that might overflow */
+    border-radius: 8px;
+    /* Slightly rounded corners */
+}
+
+.bottom-image-placeholder img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    /* Cover the area, potentially cropping */
+
+}
+
+/* About Section Layout */
+.about-section {
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    margin: 80px auto 40px auto; /* Top, right/left auto, bottom margin */
+    padding: 80px 50px 20px 50px; /* Add some horizontal padding */
+}
+
+.mission-section {
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    margin: 0px auto 40px auto; /* Top, right/left auto, bottom margin */
+    padding: 0px 50px 0px 50px; /* Add some horizontal padding */
+}
+.about-intro {
+    flex: 1; /* Takes up one part of the flex space */
+    padding-right: 40px; /* Space between the two columns */
+    box-sizing: border-box; /* Include padding in the element's total width */
+}
+
+.about-heading {
+   
+    font-size: 4rem; /* Adjust font size to match the image */
+    font-weight: 800; /* Appears to be regular weight */
+    color: #333; /* Dark text color */
+    max-width: 450px; /* Constrain width of the heading */
+}
+
+.mission-heading {
+    
+    font-size: 4rem; /* Adjust font size to match the image */
+    font-weight: 800; /* Appears to be regular weight */
+    color: #333; /* Dark text color */
+    max-width: 450px; /* Constrain width of the heading */
+}
+
+
+.about-details {
+    flex: 1; /* Takes up one part of the flex space */
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box; /* Include padding in the element's total width */
+    width: auto;
+    height: auto;
+    background-color: transparent;
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid black;
+    transition: background-color 0.4s ease-in-out;
+    
+}
+
+.mission-details {
+    flex: 1; /* Takes up one part of the flex space */
+    display: flex;
+    flex-direction: column;
+    gap: 0px; /* Space between paragraphs */
+    box-sizing: border-box; /* Include padding in the element's total width */
+    width: auto;
+    height: auto;
+    background-color: transparent;
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid black;
+    transition: background-color 0.4s ease-in-out;
+    
+}
+
+.mission-details p {
+    font-family: 'Helvetica Neue', Arial, sans-serif; /* Or a similar clean sans-serif font */
+    font-size: 1.5rem; /* Adjust font size to match the image */
+    line-height: 1.5;
+    color: #555; /* Slightly lighter text color for body paragraphs */
+    margin: 6px 0px;
+    padding: 30px;
+    transition: color 0.9s ease-in-out;
+}
+
+.about-details p {
+    font-family: 'Helvetica Neue', Arial, sans-serif; /* Or a similar clean sans-serif font */
+    font-size: 1.5rem; /* Adjust font size to match the image */
+    line-height: 1.6;
+    color: #555; /* Slightly lighter text color for body paragraphs */
+    padding: 20px;
+    transition: color 0.9s ease-in-out;
+}
+
+.about-details:hover{
+    background-color: black;
+    color: white;
+}
+
+.about-details p:hover{
+    
+    color: white;
+}
+
+.mission-details:hover{
+    background-color: black;
+    color: white;
+}
+
+.mission-details p:hover{
+    
+    color: white;
+}
+.speaker-section {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: black;
+    color: white;
+}
+
+.speaker-list {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.speaker-item {
+    padding: 15px 0;
+    cursor: pointer;
+    border-bottom: 1px solid #333;
+    font-size: 1.5em;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+
+}
+
+.speaker-item:hover {
+    color: #007bff;
+}
+
+.speaker-title {
+    display: block;
+    font-size: 0.7em;
+    font-weight: normal;
+    color: #aaa;
+}
+
+.speaker-image-display {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    min-height: 600px;
+}
+
+.speaker-photo {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.speaker-photo.active-photo {
+    opacity: 1;
+    /* Show the active image */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- Testimonial Section Styling --- */
+.testimonial-section {
+    padding: 50px 5%;
+    /* Adjust padding as needed */
+    background-color: #f8f8f8;
+    /* Light background similar to image */
+    font-family: 'Inter', sans-serif;
+    /* Ensure 'Inter' font is linked in your HTML head */
+    color: #333;
+}
+
+.testimonial-header h2 {
+    font-size: 2.5em;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 50px;
+    text-align: left;
+}
+
+
+/* --- Testimonials Grid --- */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 0px;
+}
+
+.testimonial-card {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 0px;
+    border-right: 2px solid #f8f8f8;
+    display: flex;
+    flex-direction: column;
+
+    /* Center content within the card */
+    text-align: center;
+    min-height: 250px;
+    /* Ensure cards have a consistent minimum height */
+    transition: background-color 0.5s ease-in-out;
+}
+
+/* .testimonial-card:hover{
+    background-color: #00000092;
+    color: #f8f8f8;
+    transform:rotateY('10deg');
+} */
+
+.testimonial-quote {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    color: #444444b9;
+    font-weight: 600;
+    text-align: left;
+    /* Regular weight for quote text */
+}
+
+.testimonial-quote strong {
+    font-weight: 600;
+    /* Bolder for emphasized words like "reliable" */
+    color: #000;
+}
+
+.reviewer-info {
+    margin-top: auto;
+    /* Pushes reviewer info to the bottom of the card */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start !important;
+    text-align: left !important;
+}
+
+.reviewer-name {
+    font-size: 1.1em;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.reviewer-title {
+    font-size: 0.9em;
+    color: #777;
+    text-align: left;
+}
+
+
+
+
+/* --- Services Section Overall --- */
+.services-section {
+    padding: 10px 2%;
+    display: flex;
+    max-width: 1400px;
+    color: #333;
+    background-color: #fff;
+   
+}
+
+
+
+.services-heading:nth-of-type(1) {
+    font-size: 1rem;
+    /* Adjust heading size */
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 40px;
+    text-align: left;
+    /* Align text to the left as in screenshot */
+}
+
+
+
+.services-heading:nth-of-type(2) {
+    font-size: 2rem !important;
+    /* Adjust heading size */
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 40px;
+    text-align: left;
+    /* Align text to the left as in screenshot */
+}
+
+/* --- Cards Container (Grid for cards within each group) --- */
+.cards-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;  
+}
+
+.scroll-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* --- Individual Service Card Styling --- */
+.service-card {
+    padding: 22px;
+    border-radius: 2px;
+    text-align: left;
+    min-height: 200px;
+    width:250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    scroll-snap-align: start;
+    
+}
+
+.card-icon img {
+    font-size: 1.8em;
+    /* Size of the icon */
+    color: #333;
+    /* Icon color */
+    width: 50px;
+    height: 50px;
+    margin-bottom: 40px;
+}
+
+/* .card-icon img:hover{
+    transform: translateX(50px);
+} */
+
+
+.card-title {
+    font-size: 1.4em;
+    font-weight: 600;
+    color: #000;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.card-description {
+    font-size: 0.9em;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 0;
+}
+
+.service-button{
+    width: 40px;
+    height: 40px;
+    float: right;
+}
+ 
+
+
+
+
+
+/* Hero Section Layout */
+.registration {
+    display: flex;
+    min-height: 500px; /* Adjust height as needed */
+    width: 100%;
+    color: #fff; /* Default text color for the hero section */
+    justify-content: space-between;
+}
+
+.registration-visual img{
+    
+    width: 500px;
+    height: 600px;
+    justify-content: center;
+    padding: 60px;
+}
+
+.registration-content {
+    width: 450px;
+    background-color: #1a1a1a; /* Dark background color for the text side */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px; /* Adjust padding as needed */
+    text-align: left;
+}
+
+/* Hero Content Styling */
+.registration-title {
+    font-size: 40px; /* Adjust size based on visual */
+    font-weight: 700; /* Bold */
+    margin-bottom: 20px;
+    line-height: 1.2;
+    color: #fff;
+}
+
+.registration-description {
+    font-size: 16px; /* Adjust size as needed */
+    line-height: 1.6;
+    margin-bottom: 30px;
+    max-width: 500px; /* Constrain text width for readability */
+    color: #ccc; /* Slightly lighter color for description */
+}
+
+.learn-more-btn {
+    display: inline-block;
+    background-color: transparent; /* No background for the button */
+    color: #fff;
+    border: 1px solid #fff; /* White border */
+    padding: 12px 25px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 4px; /* Slightly rounded corners */
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    width: 200px;
+}
+
+.learn-more-btn:hover {
+    background-color: #fff;
+    color: #1a1a1a; /* Text color changes on hover */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Main container for the contact page content */
+.contact-us-container {
+    display: flex;
+    background-color: #fff;
+    border: 1px solid black;    
+    max-width: 1200px; /* Max width of the overall contact section */
+    width: 90%; /* Responsive width */
+    overflow: hidden;
+    margin: 50px auto; /* Adds space above/below and centers if not handled by parent flex */
+}
+
+/* Left Section Styles */
+.left-section {
+    flex: 1; /* Takes equal space with right section on larger screens */
+    padding: 40px;
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers content vertically */
+    color: #fff;
+}
+
+.left-section h1 {
+    font-size: 2.8em;
+    margin-bottom: 30px;
+    line-height: 1.2;
+    color: #fff;
+}
+
+.checklist p {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.checklist span {
+    color: #4CAF50; /* Green checkmark */
+    font-size: 1.4em;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.left-section h2 {
+    font-size: 1.8em;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+.founder-info {
+    display: flex;
+    align-items: center;
+    background-color: #e8f5e9; /* Light green background */
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.founder-info img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%; /* Makes image round */
+    margin-right: 15px;
+    object-fit: cover;
+}
+
+.founder-info h3 {
+    margin: 0;
+    font-size: 1.3em;
+    color: #2c3e50;
+}
+
+.founder-info p {
+    margin: 0;
+    color: #555;
+    font-size: 0.95em;
+}
+
+.calendar-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-size: 1.5em;
+    cursor: pointer;
+    margin-left: auto; /* Pushes button to the right */
+    transition: background-color 0.3s ease;
+}
+
+.calendar-btn:hover {
+    background-color: #45a049;
+}
+
+/* Right Section (Form) Styles */
+.right-section {
+    flex: 1.5; /* Takes more space than left section on larger screens */
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.right-section form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-row {
+    display: block;
+    gap: 20px; /* Space between input fields in a row */
+    margin-bottom: 20px;
+}
+
+.form-row input,
+.form-row select,
+textarea {
+    width: 80%; /* Take full width of their parent container */
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-size: 1em;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    background-color: #fdfdfd;
+    margin-bottom: 10px;
+}
+
+textarea {
+    resize: vertical; /* Allow vertical resizing only */
+    min-height: 120px;
+    margin-bottom: 20px;
+}
+
+.right-section h3 {
+    font-size: 1.6em;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+.help-options {
+    display: flex;
+    flex-wrap: wrap; /* Allows buttons to wrap to the next line */
+    gap: 10px; /* Space between buttons */
+    margin-bottom: 30px;
+}
+
+.help-options button {
+    background-color: #eee;
+    border: 1px solid #ddd;
+    padding: 12px 20px;
+    border-radius: 25px; /* Pill-shaped buttons */
+    font-size: 0.95em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #555;
+}
+
+.help-options button:hover {
+    background-color: #e0e0e0;
+    border-color: #ccc;
+}
+
+/* Example active state for buttons (requires JavaScript to apply 'active' class) */
+.help-options button.active {
+    background-color: #000; /* Blue active state */
+    color: white;
+    border-color: #000;
+}
+
+.send-message-btn {
+    background-color: #000;
+    color: white;
+    border: none;
+    padding: 18px 30px;
+    font-size: 1.2em;
+    font-weight: 300;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: fit-content; /* Button width fits content */
+    align-self: flex-start; /* Aligns to the left within its flex parent */
+}
+
+.send-message-btn:hover {
+    background-color: #205ac7;
+}
+
+.email-info {
+    text-align: right;
+    margin-top: 20px;
+    font-size: 0.95em;
+    color: #777;
+}
+
+.email-info a {
+    color: #000;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.email-info a:hover {
+    text-decoration: underline;
+}
+
+
+
+
+
+
+/* Styling for the footer */
+footer {
+    background-color: #000; /* Dark background */
+    color: #fff; /* White text */
+    padding: 60px 40px; /* Adjust padding as needed */
+    font-family: 'Poppins', sans-serif; /* Assuming Poppins or similar modern font */
+}
+
+/* Footer Top Section */
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px; /* Align with your main content width */
+    margin: 0 auto;
+    padding-bottom: 40px;
+}
+
+.footer-top h3 {
+    font-size: 2rem !important; /* Large heading */
+    font-weight: 600;
+    margin: 0;
+    max-width: 600px;
+}
+
+.get-in-touch-btn {
+    background-color: #2a71f0; /* Blue button */
+    color: #fff;
+    text-decoration: none;
+    padding: 15px 30px;
+    border-radius: 50px; /* Pill shape */
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.get-in-touch-btn:hover {
+    background-color: #205ac7;
+}
+
+/* Divider Line */
+.footer-divider {
+    border-top: 1px solid #333; /* Light grey line */
+    margin: 40px auto;
+    max-width: 1200px; /* Align with your main content width */
+}
+
+/* Main Footer Content */
+.footer-main {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 40px;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    gap: 30px; /* Gap between columns */
+}
+
+.footer-logo img {
+    height: 60px; /* Adjust size as needed */
+    filter: brightness(0) invert(1); /* Makes a dark logo white if it's black on transparent */
+}
+
+.footer-links {
+    display: flex;
+    gap: 60px; /* Space between link columns */
+    flex-wrap: wrap; /* Allow columns to wrap */
+}
+
+.link-column {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between links in a column */
+}
+
+.link-column a {
+    color: #ccc; /* Lighter text for links */
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+    white-space: nowrap; /* Prevent "Futures Report 2025" from breaking badly */
+}
+
+.link-column a:hover {
+    color: #fff;
+}
+
+.footer-newsletter {
+    flex-grow: 1; /* Allows newsletter section to take available space */
+    max-width: 350px; /* Limit width */
+}
+
+.footer-newsletter p {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    color: #ccc;
+}
+
+.newsletter-input {
+    display: flex;
+    margin-bottom: 25px;
+    border: 1px solid #333;
+    border-radius: 50px;
+    overflow: hidden; /* Ensures input and button stay within border-radius */
+}
+
+.newsletter-input input {
+    flex-grow: 1;
+    padding: 12px 20px;
+    border: none;
+    background-color: transparent;
+    color: #fff;
+    font-size: 1em;
+    outline: none;
+}
+
+.newsletter-input input::placeholder {
+    color: #888;
+}
+
+.newsletter-input button {
+    background-color: #2a71f0;
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.newsletter-input button:hover {
+    background-color: #205ac7;
+}
+
+.social-icons {
+    display: flex;
+    gap: 20px; /* Space between social icons */
+}
+
+.social-icons a img {
+    height: 24px; /* Size of social icons */
+    filter: brightness(0) invert(1); /* Makes icons white if they are dark */
+    transition: opacity 0.3s ease;
+}
+
+.social-icons a:hover img {
+    opacity: 0.8;
+}
+
+/* Footer Bottom Section */
+.footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 20px;
+    text-align: left; /* Default alignment */
+    font-size: 0.9em;
+    color: #888; /* Lighter text for copyright */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Allow wrapping of copyright and windows activation */
+}
+
+.footer-bottom a {
+    color: #888;
+    text-decoration: none;
+}
+
+.footer-bottom a:hover {
+    text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+
