@@ -16,6 +16,15 @@
 <body>
     <div class="Container">
         <div class="card">
+             {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <ul class="flashes">
+            {% for category, message in messages %}
+            <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
             <div class="hero-section">
                 <div class="hero-left">
                     <p>Welcome to</p>
@@ -31,7 +40,7 @@
             </div>
 
             <div class="bottom-image-placeholder">
-                <img src="{{ url_for('static', filename='images/Frame 1.svg)}}" alt="Dashboard Preview">
+                <img src="{{ url_for('static', filename='images/Frame 1.svg')}}" alt="Dashboard Preview">
             </div>
         </div>
 
@@ -101,7 +110,7 @@
 
                 <div class="speaker-image-display">
                     <img src="" class="speaker-photo active-photo" id="default-speaker-photo">
-                    <img src = "{{ url_for('static', filename='images/musibau-Photoroom.png')}}" alt="musibau-lasisi" class="speaker-photo" id="musibau-lasisi-photo">
+                    <img src = "{{ url_for('static', filename='images/musibau-Photoroom.png') }}" alt="musibau-lasisi" class="speaker-photo" id="musibau-lasisi-photo">
                     <img src="{{ url_for('static', filename='images/usha-Photoroom.png')}}" alt="Jeanne Grosser" class="speaker-photo"
                         id="ushaseer-tembe-photo">
                     <img src="{{ url_for('static', filename='images/chegbe-Photoroom.png')}}" alt="Jeanne Grosser" class="speaker-photo"
@@ -127,7 +136,7 @@
                         Embark on a 6-month journey of innovation and skill-building. At PORA Tech Academy, we're
                         committed to equipping you for the future. Join us in Cohort 5.0 and unlock your potential.
                     </p>
-                    <a href="contact-us.html" class="learn-more-btn">Reserve A Seat</a>
+                    <a href="{{url_for('event_registration_page')}}" class="learn-more-btn">Reserve A Seat</a>
                 </div>
             </section>
 
@@ -333,8 +342,7 @@
             </section>
 
 
-
-
+            
             <div class="contact-us-container">
                 <div class="left-section">
                     <h1>Connect with PORA Tech Academy</h1>
@@ -347,15 +355,15 @@
                 </div>
 
                 <div class="right-section">
-                    <form>
+                    <form method="post" action="{{url_for('submit_contact')}}">
                         <div class="form-row">
-                            <input type="email" placeholder="Email" required style="display: block !important;">
-                            <input type="text" placeholder="First Name" required>
-                            <input type="text" placeholder="Last Name" required>
+                            <input type="email" placeholder="Email" required style="display: block !important;" name="email">
+                            <input type="text" placeholder="First Name" required name="firstname">
+                            <input type="text" placeholder="Last Name" required name="lastname">
                         </div>
 
 
-                        <textarea placeholder="Please describe your inquiry here (e.g., program interest, career goals in ICT, partnership proposal, or any other questions)... " required></textarea>
+                        <textarea placeholder="Please describe your inquiry here (e.g., program interest, career goals in ICT, partnership proposal, or any other questions)... " required name="message"></textarea>
                         <button type="submit" class="send-message-btn">Send message</button>
                     </form>
                     <p class="email-info">

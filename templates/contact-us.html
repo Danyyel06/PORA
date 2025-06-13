@@ -19,6 +19,16 @@
 
         </header>
 
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <ul class="flashes">
+            {% for category, message in messages %}
+            <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+
         <main class="main-content">
             <div class="attendee-info-section">
                 <h2 class="section-title">
@@ -26,31 +36,35 @@
                 </h2>
 
 
-                <form class="attendee-form">
+                <form class="attendee-form" action="/submit-registration" method="post">
                     <div class="form-row">
                         <div class="form-group">
                             <label for="first-name">FIRST NAME</label>
-                            <input type="text" id="first-name" value="" placeholder="FIRST NAME">
+                            <input type="text" id="first-name" value="" placeholder="FIRST NAME" name="firstname">
                         </div>
                         <div class="form-group">
                             <label for="last-name">LAST NAME</label>
-                            <input type="text" id="last-name" value="" placeholder="LAST NAME">
+                            <input type="text" id="last-name" value="" placeholder="LAST NAME" name="lastname">
                         </div>
-                    </div>
-
-                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Phone Number:</label>
+                            <input type="tel" id="phone" name="phone" placeholder="PHONE NUMBER">
+                        </div>
                         <div class="form-group">
                             <label for="work-email">EMAIL</label>
-                            <input type="email" id="work-email" value="" placeholder="EMAIL">
+                            <input type="email" id="work-email" value="" placeholder="EMAIL" name="email">
                         </div>
-
                     </div>
 
+
+
                     <div class="purchase-button-container">
-                        <a type="submit" class="complete-purchase-btn">
+                        <button class="complete-purchase-btn" type="submit">
                             Complete Registration
-                            <span class="price-tag"><img src="{{ url_for('static', filename='images/right-arrow (4).png')}}" alt="" width="30px" height="30px"></span>
-                        </a>
+                            <span class="price-tag"><img
+                                    src="{{ url_for('static', filename='images/right-arrow (4).png')}}" alt=""
+                                    width="30px" height="30px"></span>
+                        </button>
                     </div>
                 </form>
 
@@ -68,8 +82,9 @@
                 </div>
                 <div>
                     <button class="checkout-btn">
-                        CHECKOUT
-                        <img src="{{ url_for('static', filename='images/shopping-cart (1).png')}}" alt="Cart Icon" class="cart-icon">
+                        SEE YOU SOON
+                        <img src="{{ url_for('static', filename='images/shopping-cart (1).png')}}" alt="Cart Icon"
+                            class="cart-icon">
                     </button>
                 </div>
 
@@ -85,7 +100,8 @@
         <div class="footer-divider"></div>
         <div class="footer-main">
             <div class="footer-logo">
-                <img src="{{ url_for('static', filename='images/logo-2.png')}}" alt="PORA Logo" width="200px" height="800px">
+                <img src="{{ url_for('static', filename='images/logo-2.png')}}" alt="PORA Logo" width="200px"
+                    height="800px">
             </div>
             <div class="footer-links">
                 <div class="link-column">
@@ -119,7 +135,7 @@
             <p>Copyright © 2022 - 2025 PORA Tech Academy</p>
         </div>
     </footer>
-
+<script src="{{url_for('static', filename = 'js/script.js')}}"></script>
 </body>
 
 </html>

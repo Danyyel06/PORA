@@ -19,27 +19,25 @@ db = SQLAlchemy(app)
 
 class ContactMessage(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), nullable=False)
+    firstname = db.Column(db.String(100), nullable=False)
+    lastname = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(120), nullable=False)
-    subject = db.Column(db.String(200), nullable=True)
     message = db.Column(db.Text, nullable=False)
     date_submitted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow) # Use datetime.utcnow
 
     def __repr__(self):
-        return f'<ContactMessage {self.name} - {self.subject}>'
+        return f'<ContactMessage {self.firstname}  {self.firstname} - {self.message}>'
 
 class EventRegistration(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), nullable=False)
+    firstname = db.Column(db.String(100), nullable=False)
+    lastname = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(120), nullable=False)
-    event_name = db.Column(db.String(200), nullable=False)
     registration_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow) # Use datetime.utcnow
     phone = db.Column(db.String(20), nullable=True)
-    company = db.Column(db.String(100), nullable=True)
-    status = db.Column(db.String(50), default='Pending') # e.g., 'Pending', 'Confirmed', 'Attended'
 
     def __repr__(self):
-        return f'<EventRegistration {self.name} - {self.event_name}>'
+        return f'<EventRegistration {self.firstname}  {self.firstname} - {self.registration_date}>'
 
 # --- Routes (Your Website's Pages) ---
 
@@ -70,12 +68,12 @@ def contact_admin_page():
 @app.route('/submit-contact', methods=['POST'])
 def submit_contact():
     if request.method == 'POST':
-        name = request.form['name']
+        firstname = request.form['firstname']
+        lastname = request.form['lastname']
         email = request.form['email']
-        subject = request.form.get('subject')
         message = request.form['message']
 
-        new_message = ContactMessage(name=name, email=email, subject=subject, message=message)
+        new_message = ContactMessage(firstname=firstname,lastname=lastname, email=email, message=message)
         db.session.add(new_message)
         db.session.commit()
         flash('Your message has been sent successfully!', 'success') # Flash message for user feedback
@@ -87,18 +85,16 @@ def submit_contact():
 @app.route('/submit-registration', methods=['POST'])
 def submit_registration():
     if request.method == 'POST':
-        name = request.form['name']
+        firstname = request.form['firstname']
+        lastname = request.form['lastname']
         email = request.form['email']
-        event_name = request.form['event'] # Ensure your form field has name="event"
         phone = request.form.get('phone')
-        company = request.form.get('company')
 
         new_registration = EventRegistration(
-            name=name,
+            firstname=firstname,
+            lastname=lastname,
             email=email,
-            event_name=event_name,
-            phone=phone,
-            company=company
+            phone=phone
         )
         db.session.add(new_registration)
         db.session.commit()

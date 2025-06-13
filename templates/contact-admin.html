@@ -1,18 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - Contact Messages</title>
-     <link rel="stylesheet" href="{{url_for('static', filename = 'css/admin-styles.css')}}"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/admin-styles.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+
 <body>
     <header class="admin-header">
         <div class="admin-header-content">
             <h1>Contact Messages</h1>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            <ul class="flashes">
+                {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% endwith %}
             <nav>
-                <a href="dashboard.html">Dashboard</a> <a href="event-admin.html">Event Registrations</a>
-                
+                <a href="{{url_for('index')}}">Home Page</a> <a href="{{url_for('event_admin_page')}}">Event Registrations</a>
+
             </nav>
         </div>
     </header>
@@ -21,70 +33,44 @@
         <section class="admin-section">
             <div class="section-header">
                 <h2>Inbox</h2>
-                <button class="primary-button"><i class="fas fa-sync-alt"></i> Refresh Messages</button>
+               
             </div>
 
-            <div class="filter-bar">
-                <input type="text" placeholder="Search by sender or subject..." class="text-input">
-                <select class="select-input">
-                    <option value="">Filter by Status</option>
-                    <option value="new">New</option>
-                    <option value="read">Read</option>
-                    <option value="replied">Replied</option>
-                </select>
-            </div>
 
             <div class="admin-table-container">
+                {% if messages %}
                 <table class="admin-table">
                     <thead>
                         <tr>
-                            <th>From</th>
+                            <th>ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
                             <th>Email</th>
-                            <th>Subject</th>
-                            <th>Date</th>
-                            <th>Status</th>
+                            <th>Message</th>
+                            <th>Date Submitted</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="message-row status-new">
-                            <td>Jane Doe</td>
-                            <td>jane.doe@example.com</td>
-                            <td>Inquiry about courses</td>
-                            <td>2025-06-09</td>
-                            <td><span class="status-badge status-new">New</span></td>
+                        {% for msg in messages %} {# Loop through each ContactMessage object #}
+                        <tr class="message-row">
+                            <td>{{msg.id}}</td>
+                            <td>{{msg.firstname}}</td>
+                            <td>{{msg.lastname}}</td>
+                            <td>{{msg.email}}</td>
+                            <td>{{msg.message}}</td>
+                            <td>{{msg.date_submitted.strftime('%Y-%m-%d %H:%M')}}</td>
                             <td>
-                                <button class="action-button view-button" data-message-id="M001"><i class="fas fa-eye"></i> View</button>
-                                <button class="action-button reply-button"><i class="fas fa-reply"></i> Reply</button>
-                                <button class="action-button delete-button"><i class="fas fa-trash-alt"></i> Delete</button>
+                                <button class="action-button view-button" data-message-id="M001"><i
+                                        class="fas fa-eye"></i> View</button>
                             </td>
                         </tr>
-                        <tr class="message-row status-read">
-                            <td>John Smith</td>
-                            <td>john.smith@example.com</td>
-                            <td>Partnership Proposal</td>
-                            <td>2025-06-07</td>
-                            <td><span class="status-badge status-read">Read</span></td>
-                            <td>
-                                <button class="action-button view-button" data-message-id="M002"><i class="fas fa-eye"></i> View</button>
-                                <button class="action-button reply-button"><i class="fas fa-reply"></i> Reply</button>
-                                <button class="action-button delete-button"><i class="fas fa-trash-alt"></i> Delete</button>
-                            </td>
-                        </tr>
-                        <tr class="message-row status-replied">
-                            <td>Alice Johnson</td>
-                            <td>alice.j@example.com</td>
-                            <td>Feedback on event</td>
-                            <td>2025-06-05</td>
-                            <td><span class="status-badge status-replied">Replied</span></td>
-                            <td>
-                                <button class="action-button view-button" data-message-id="M003"><i class="fas fa-eye"></i> View</button>
-                                <button class="action-button reply-button"><i class="fas fa-reply"></i> Reply</button>
-                                <button class="action-button delete-button"><i class="fas fa-trash-alt"></i> Delete</button>
-                            </td>
-                        </tr>
-                        </tbody>
+                        {% endfor %}
+                    </tbody>
                 </table>
+                {% else %}
+                <p>No contact messages found yet.</p>
+                {% endif %}
             </div>
         </section>
 
@@ -93,18 +79,13 @@
                 <span class="close-button">&times;</span>
                 <h3>Message Details</h3>
                 <div class="message-details-content">
-                    <p><strong>From:</strong> <span id="detailFrom"></span></p>
-                    <p><strong>Email:</strong> <span id="detailEmail"></span></p>
-                    <p><strong>Subject:</strong> <span id="detailSubject"></span></p>
-                    <p><strong>Date:</strong> <span id="detailDate"></span></p>
-                    <p><strong>Status:</strong> <span id="detailStatus"></span></p>
-                    <p><strong>Message:</strong></p>
+                    <p><strong>ID:</strong> <span id="ID"></span></p>
+                    <p><strong>First Name:</strong> <span id="FirstName"></span></p>
+                    <p><strong>Last Name:</strong> <span id="LastName"></span></p>
+                    <p><strong>Email:</strong> <span id="Email"></span></p>
+                    <p><strong>Message:</strong> <span id="Message"></span></p>
+                    <p><strong>Date Submitted:</strong><span id="Date"></span></p>
                     <p id="detailMessage"></p>
-                </div>
-                <div class="modal-actions">
-                    <button class="primary-button" id="markAsReadBtn"><i class="fas fa-check-circle"></i> Mark as Read</button>
-                    <button class="primary-button"><i class="fas fa-envelope"></i> Reply via Email</button>
-                    <button class="secondary-button delete-button"><i class="fas fa-trash-alt"></i> Delete Message</button>
                 </div>
             </div>
         </div>
@@ -112,30 +93,31 @@
     </main>
 
     <footer class="admin-footer">
-        <p>&copy; 2025 Your Company. All rights reserved.</p>
+        <p>&copy; 2025 PORA ACADEMY. All rights reserved.</p>
     </footer>
 
     <script>
         document.querySelectorAll('.view-button').forEach(button => {
-            button.addEventListener('click', function() {
+            button.addEventListener('click', function () {
                 const row = this.closest('tr');
-                document.getElementById('detailFrom').textContent = row.children[0].textContent;
-                document.getElementById('detailEmail').textContent = row.children[1].textContent;
-                document.getElementById('detailSubject').textContent = row.children[2].textContent;
-                document.getElementById('detailDate').textContent = row.children[3].textContent;
-                document.getElementById('detailStatus').textContent = row.children[4].textContent;
-                // Placeholder for full message content (would typically be fetched from backend via data-message-id)
-                document.getElementById('detailMessage').textContent = "This is the full message content for message ID " + this.dataset.messageId + ". In a real application, this would come from a database query.";
+                document.getElementById('ID').textContent = row.children[0].textContent;
+                document.getElementById('FirstName').textContent = row.children[1].textContent;
+                document.getElementById('LastName').textContent = row.children[2].textContent;
+                document.getElementById('Email').textContent = row.children[3].textContent;
+                document.getElementById('Message').textContent = row.children[4].textContent;
+                 document.getElementById('Date').textContent = row.children[5].textContent;
+               
+               
 
                 document.getElementById('messageDetailModal').style.display = 'block';
             });
         });
 
-        document.querySelector('#messageDetailModal .close-button').addEventListener('click', function() {
+        document.querySelector('#messageDetailModal .close-button').addEventListener('click', function () {
             document.getElementById('messageDetailModal').style.display = 'none';
         });
 
-        window.addEventListener('click', function(event) {
+        window.addEventListener('click', function (event) {
             const modal = document.getElementById('messageDetailModal');
             if (event.target == modal) {
                 modal.style.display = 'none';
@@ -143,4 +125,5 @@
         });
     </script>
 </body>
+
 </html>

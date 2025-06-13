@@ -1,18 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Event Registrations</title>
-    <link rel="stylesheet" href="{{url_for('static', filename = 'css/admin-styles.css')}}"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Admin - Contact Messages</title>
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/admin-styles.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+
 <body>
     <header class="admin-header">
         <div class="admin-header-content">
-            <h1>Event Registrations</h1>
+            <h1>Contact Messages</h1>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            <ul class="flashes">
+                {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% endwith %}
             <nav>
-                <a href="dashboard.html">Dashboard</a> <a href="contact-admin.html">Contact Messages</a>
-            
+                <a href="{{url_for('index')}}">Home Page</a> <a href="{{url_for('contact_admin_page')}}">Contact Us Messages</a>
+
             </nav>
         </div>
     </header>
@@ -20,96 +32,62 @@
     <main class="admin-main-content">
         <section class="admin-section">
             <div class="section-header">
-                <h2>All Registrations</h2>
-                <button class="primary-button"><i class="fas fa-sync-alt"></i> Refresh List</button>
+                <h2>Event Registration</h2>
+               
             </div>
 
-            <div class="filter-bar">
-                <input type="text" placeholder="Search by name or email..." class="text-input">
-                <select class="select-input">
-                    <option value="">Filter by Event</option>
-                    <option value="tech-summit">Annual Tech Summit 2025</option>
-                    </select>
-                <select class="select-input">
-                    <option value="">Filter by Status</option>
-                    <option value="confirmed">Confirmed</option>
-                    <option value="pending">Pending</option>
-                    <option value="attended">Attended</option>
-                </select>
-            </div>
 
             <div class="admin-table-container">
+                {% if messages %}
                 <table class="admin-table">
                     <thead>
                         <tr>
-                            <th>Registrant Name</th>
+                            <th>ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
                             <th>Email</th>
-                            <th>Event Registered For</th>
-                            <th>Registration Date</th>
-                            <th>Status</th>
+                            <th>Date Registered</th>
+                            <th>Phone Number</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="registration-row status-confirmed">
-                            <td>Alice Johnson</td>
-                            <td>alice.j@example.com</td>
-                            <td>Annual Tech Summit 2025</td>
-                            <td>2025-06-09</td>
-                            <td><span class="status-badge status-confirmed">Confirmed</span></td>
+                        {% for msg in messages %} {# Loop through each ContactMessage object #}
+                        <tr class="message-row">
+                            <td>{{msg.id}}</td>
+                            <td>{{msg.firstname}}</td>
+                            <td>{{msg.lastname}}</td>
+                            <td>{{msg.email}}</td>
+                            <td>{{msg.registration_date.strftime('%Y-%m-%d %H:%M')}}</td>
+                            <td>{{msg.phone}}</td>
+                            
                             <td>
-                                <button class="action-button view-button" data-registration-id="R001"><i class="fas fa-eye"></i> View</button>
-                                <button class="action-button mark-attended-button"><i class="fas fa-user-check"></i> Attended</button>
-                                <button class="action-button delete-button"><i class="fas fa-trash-alt"></i> Delete</button>
+                                <button class="action-button view-button" data-message-id="M001"><i
+                                        class="fas fa-eye"></i> View</button>
                             </td>
                         </tr>
-                        <tr class="registration-row status-pending">
-                            <td>Bob Williams</td>
-                            <td>bob.w@example.com</td>
-                            <td>Annual Tech Summit 2025</td>
-                            <td>2025-06-08</td>
-                            <td><span class="status-badge status-pending">Pending</span></td>
-                            <td>
-                                <button class="action-button view-button" data-registration-id="R002"><i class="fas fa-eye"></i> View</button>
-                                <button class="action-button mark-attended-button"><i class="fas fa-user-check"></i> Attended</button>
-                                <button class="action-button delete-button"><i class="fas fa-trash-alt"></i> Delete</button>
-                            </td>
-                        </tr>
-                        <tr class="registration-row status-attended">
-                            <td>Charlie Brown</td>
-                            <td>charlie.b@example.com</td>
-                            <td>Annual Tech Summit 2025</td>
-                            <td>2025-06-01</td>
-                            <td><span class="status-badge status-attended">Attended</span></td>
-                            <td>
-                                <button class="action-button view-button" data-registration-id="R003"><i class="fas fa-eye"></i> View</button>
-                                <button class="action-button mark-attended-button" disabled><i class="fas fa-user-check"></i> Attended</button>
-                                <button class="action-button delete-button"><i class="fas fa-trash-alt"></i> Delete</button>
-                            </td>
-                        </tr>
-                        </tbody>
+                        {% endfor %}
+                    </tbody>
                 </table>
+                {% else %}
+                <p>No registration found yet.</p>
+                {% endif %}
             </div>
         </section>
 
-        <div id="registrationDetailModal" class="modal" style="display: none;">
+        <div id="messageDetailModal" class="modal" style="display: none;">
             <div class="modal-content">
                 <span class="close-button">&times;</span>
-                <h3>Registration Details</h3>
-                <div class="registration-details-content">
-                    <p><strong>Registrant Name:</strong> <span id="detailName"></span></p>
-                    <p><strong>Email:</strong> <span id="detailEmail"></span></p>
-                    <p><strong>Phone:</strong> <span id="detailPhone"></span></p>
-                    <p><strong>Event:</strong> <span id="detailEvent"></span></p>
-                    <p><strong>Registration Date:</strong> <span id="detailRegDate"></span></p>
-                    <p><strong>Status:</strong> <span id="detailStatus"></span></p>
-                    <p><strong>Company:</strong> <span id="detailCompany"></span></p>
-                    <p><strong>Agreed to Terms:</strong> <span id="detailTerms"></span></p>
-                </div>
-                <div class="modal-actions">
-                    <button class="primary-button" id="markAsConfirmedBtn"><i class="fas fa-check"></i> Mark as Confirmed</button>
-                    <button class="secondary-button" id="markAsAttendedBtn"><i class="fas fa-user-check"></i> Mark as Attended</button>
-                    <button class="secondary-button delete-button"><i class="fas fa-trash-alt"></i> Delete Registration</button>
+                <h3>Message Details</h3>
+                <div class="message-details-content">
+                    <p><strong>ID:</strong> <span id="ID"></span></p>
+                    <p><strong>First Name:</strong> <span id="FirstName"></span></p>
+                    <p><strong>Last Name:</strong> <span id="LastName"></span></p>
+                    <p><strong>Email:</strong> <span id="Email"></span></p>
+                    <p><strong>Date Registered:</strong><span id="Date"></span></p>
+                    <p><strong>Phone:</strong> <span id="Phone"></span></p>
+                    
+                    <p id="detailMessage"></p>
                 </div>
             </div>
         </div>
@@ -117,38 +95,38 @@
     </main>
 
     <footer class="admin-footer">
-        <p>&copy; 2025 Your Company. All rights reserved.</p>
+        <p>&copy; 2025 PORA ACADEMY. All rights reserved.</p>
     </footer>
 
     <script>
         document.querySelectorAll('.view-button').forEach(button => {
-            button.addEventListener('click', function() {
+            button.addEventListener('click', function () {
                 const row = this.closest('tr');
-                document.getElementById('detailName').textContent = row.children[0].textContent;
-                document.getElementById('detailEmail').textContent = row.children[1].textContent;
-                document.getElementById('detailEvent').textContent = row.children[2].textContent;
-                document.getElementById('detailRegDate').textContent = row.children[3].textContent;
-                document.getElementById('detailStatus').textContent = row.children[4].textContent;
+                document.getElementById('ID').textContent = row.children[0].textContent;
+                document.getElementById('FirstName').textContent = row.children[1].textContent;
+                document.getElementById('LastName').textContent = row.children[2].textContent;
+                document.getElementById('Email').textContent = row.children[3].textContent;
+                 document.getElementById('Date').textContent = row.children[4].textContent;
+                document.getElementById('Phone').textContent = row.children[5].textContent;
+                
+               
+               
 
-                // Placeholder for additional details (would be fetched from backend)
-                // document.getElementById('detailPhone').textContent = "08012345678"; 
-                // document.getElementById('detailCompany').textContent = "ABC Corp."; 
-                // document.getElementById('detailTerms').textContent = "Yes"; 
-
-                document.getElementById('registrationDetailModal').style.display = 'block';
+                document.getElementById('messageDetailModal').style.display = 'block';
             });
         });
 
-        document.querySelector('#registrationDetailModal .close-button').addEventListener('click', function() {
-            document.getElementById('registrationDetailModal').style.display = 'none';
+        document.querySelector('#messageDetailModal .close-button').addEventListener('click', function () {
+            document.getElementById('messageDetailModal').style.display = 'none';
         });
 
-        window.addEventListener('click', function(event) {
-            const modal = document.getElementById('registrationDetailModal');
+        window.addEventListener('click', function (event) {
+            const modal = document.getElementById('messageDetailModal');
             if (event.target == modal) {
                 modal.style.display = 'none';
             }
         });
     </script>
 </body>
+
 </html>

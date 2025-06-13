@@ -30,3 +30,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // Ensure default photo is shown on initial load
     showPhoto('default-speaker-photo');
 });
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const flashMessages = document.querySelector('.flashes');
+
+    if (flashMessages) {
+        // Function to hide the flash messages
+        function hideFlashMessages() {
+            if (flashMessages) { 
+                flashMessages.style.display = 'none'; 
+            }
+        }
+        setTimeout(hideFlashMessages, 1500); 
+    }
+});
