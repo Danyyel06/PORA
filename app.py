@@ -1,6 +1,6 @@
+import os
 from flask import Flask, render_template, url_for, request, redirect, flash
 from flask_sqlalchemy import SQLAlchemy
-import os
 from datetime import datetime # Import datetime for setting default date
 
 # --- Flask App Configuration ---
@@ -8,9 +8,9 @@ app = Flask(__name__)
 
 # Configure database path (SQLite database will be in the 'instance' folder)
 # The 'instance' folder is typically outside of version control for security/flexibility
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(app.instance_path, 'site.db')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///site.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False # Suppress a warning
-app.config['SECRET_KEY'] = 'd55119d4eb91134d2a3c3951dcb1d2b1b94fa776c5d53f88' # <<< IMPORTANT: CHANGE THIS!
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'd55119d4eb91134d2a3c3951dcb1d2b1b94fa776c5d53f88') # <<< IMPORTANT: CHANGE THIS!
 
 # Initialize the database
 db = SQLAlchemy(app)

@@ -1,21 +1,26 @@
-# Virtual environment
+# Virtual environment directories
 venv/
-.venv/ # In case you accidentally created this again or your IDE creates it
+.venv/
 
-# Database file (SQLite)
-instance/
+# Database files (for SQLite)
+# If your site.db is directly in the root, this will ignore it.
+# If your site.db is within an 'instance/' folder (Flask convention),
+# ignoring 'instance/' covers it.
 *.db
+instance/
 
 # Python cache and compiled files
 __pycache__/
 *.pyc
 
-# Environment variables (if you start using .env files later)
+# Environment variables
 .env
 
-# Common IDE files
-.vscode/ # For VS Code
-.idea/   # For PyCharm
-
-# Logs
+# Common IDE files and project metadata
+.vscode/
+.idea/
 *.log
+
+# Operating System files
+.DS_Store # macOS thumbnail/settings file
+Thumbs.db # Windows thumbnail cache
