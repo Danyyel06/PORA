@@ -62,6 +62,10 @@ def contact_admin_page():
     messages = ContactMessage.query.order_by(ContactMessage.date_submitted.desc()).all()
     return render_template('contact-admin.html', messages=messages)
 
+@app.route('/documentation')
+def documentation():
+    return render_template('user_documentation.html')
+
 # --- Form Submission Handlers ---
 
 # Handler for general Contact Us form submission (if you add one on index.html)

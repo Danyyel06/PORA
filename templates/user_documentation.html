@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PORA Information Hub: User Documentation</title>
+    <style>
+        /* Basic styles for readability - you can override these with your project's CSS */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #333;
+        }
+        h1, h2, h3, h4 {
+            color: #2c3e50;
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+        }
+        h1 { font-size: 2em; }
+        h2 { font-size: 1.6em; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        h3 { font-size: 1.3em; }
+        ul { list-style-type: disc; margin-left: 20px; }
+        ol { margin-left: 20px; }
+        p { margin-bottom: 1em; }
+        .note {
+            background-color: #f9f9f9;
+            border-left: 4px solid #3498db;
+            padding: 10px 15px;
+            margin: 1em 0;
+            color: #555;
+        }
+        .code-example {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>PORA Information Hub: User Documentation</h1>
+    <p><strong>Version:</strong> 1.0</p>
+    <p><strong>Date:</strong> June 14, 2025</p>
+
+    <hr>
+
+    <h2>1. Introduction</h2>
+    <p>Welcome to the PORA Information Hub! This web application serves as a central platform for managing event registrations and capturing contact messages for the PORA Academy. It provides straightforward interfaces for visitors to engage with the academy's offerings and robust dashboards for authorized administrators to manage submitted data. This documentation will guide you through using the various features of the Hub.</p>
+
+    <h2>2. Getting Started: Accessing the Application</h2>
+    <p>The PORA Information Hub is a web-based application accessible via a standard web browser.</p>
+    <ul>
+        <li><strong>Main Page:</strong> You can access the main interface of the Hub by navigating to its primary URL (e.g., <code>http://127.0.0.1:5000/</code> if running locally during development).</li>
+    </ul>
+
+    <h2>3. For General Users</h2>
+    <p>This section outlines how general visitors can interact with the PORA Information Hub to register for events or send messages.</p>
+
+    <h3>3.1. How to Register for an Event</h3>
+    <p>If you are interested in joining an event hosted by PORA Academy, follow these steps:</p>
+    <ol>
+        <li><strong>Navigate to the Event Registration Page:</strong>
+            <ul>
+                <li>Click on the "Register for Event" link typically found on the Main Page.</li>
+                <li>Alternatively, you can directly access it by entering <code>/register</code> after the main application URL (e.g., <code>http://127.0.0.1:5000/register</code>).</li>
+            </ul>
+        </li>
+        <li><strong>Fill in Your Details:</strong> On the registration form, accurately complete all the required fields (e.g., Name, Email, Phone Number, Event Name).</li>
+        <li><strong>Submit Your Registration:</strong> Once all fields are filled, click the <strong>"Submit"</strong> or <strong>"Register"</strong> button.</li>
+        <li><strong>Confirm Submission:</strong> After successful submission, you will receive a clear confirmation message (a "flash message") on the screen, typically stating something like "Registration successful!"</li>
+    </ol>
+
+    <h3>3.2. How to Send a Contact Message</h3>
+    <p>To send a message or inquiry directly to PORA Academy:</p>
+    <ol>
+        <li><strong>Go to the Contact Us Page:</strong>
+            <ul>
+                <li>Look for a "Contact Us" link on the Main Page.</li>
+                <li>Or, navigate directly to <code>/contact</code> (e.g., <code>http://127.0.0.1:5000/contact</code>).</li>
+            </ul>
+        </li>
+        <li><strong>Complete the Contact Form:</strong> Enter your Name, Email, a Subject for your message, and then type your Message content.</li>
+        <li><strong>Send Your Message:</strong> Click the <strong>"Send Message"</strong> or <strong>"Submit"</strong> button.</li>
+        <li><strong>Confirm Submission:</strong> Upon successful submission, a confirmation flash message will appear, such as "Message sent successfully!"</li>
+    </ol>
+
+    <h2>4. For Administrators</h2>
+    <p>This section describes how authorized administrators can access and utilize the data management features of the PORA Information Hub.</p>
+
+    <h3>4.1. Accessing Admin Dashboards</h3>
+    <p>Admin dashboards provide an overview of submitted data. Access is typically managed directly via specific URLs or through basic authentication if implemented.</p>
+    <ul>
+        <li><strong>Event Registrations Dashboard:</strong> Access this by navigating to <code>/admin/registrations</code> (e.g., <code>http://127.0.0.1:5000/admin/registrations</code>).</li>
+        <li><strong>Contact Messages Dashboard:</strong> Access this by navigating to <code>/admin/contacts</code> (e.g., <code>http://127.0.0.1:5000/admin/contacts</code>).</li>
+    </ul>
+
+    <h3>4.2. Viewing Event Registrations</h3>
+    <p>Once on the Event Registrations Dashboard:</p>
+    <ol>
+        <li>All submitted event registrations will be automatically displayed in an organized, tabular format.</li>
+        <li>You can view key details for each registrant, including their name, email, phone number, the event they registered for, and the exact date of their registration.</li>
+    </ol>
+    <div class="note">
+        <em><strong>Note:</strong> In this version of the Hub, the dashboard primarily supports viewing records. Advanced editing or deletion features are considered for future enhancements.</em>
+    </div>
+
+    <h3>4.3. Viewing Contact Messages</h3>
+    <p>On the Contact Messages Dashboard:</p>
+    <ol>
+        <li>All submitted contact messages will be listed in a clear, readable format.</li>
+        <li>You can review details for each message, such as the sender's name, email, the subject of their inquiry, the full content of their message, and the date it was submitted.</li>
+    </ol>
+    <div class="note">
+        <em><strong>Note:</strong> Similar to the registrations dashboard, this interface is designed for viewing messages. Comprehensive message management features (e.g., marking as read, replying) are part of future enhancements.</em>
+    </div>
+
+    <h2>5. Troubleshooting & Tips</h2>
+    <ul>
+        <li><strong>Flash Messages:</strong> These are small, temporary messages that appear on the screen (often at the top) after you perform an action. They provide immediate feedback (e.g., success or error). They typically disappear after a short time or if you click outside their box.</li>
+        <li><strong>Form Submission Issues:</strong> If a form does not submit correctly, double-check that all required fields are filled out. If the issue persists, ensure you have an active internet connection or contact support.</li>
+        <li><strong>"Page Not Found" (404 Error):</strong> If you encounter this error, please double-check the URL you entered. Ensure there are no typos.</li>
+        <li><strong>Database Changes (Developer Side):</strong> As a user, you typically won't encounter this, but for developers, changes to the database structure often require deleting the old database file and creating a new one for changes to be recognized in the development environment.</li>
+    </ul>
+
+    <h2>6. Support</h2>
+    <p>For any technical issues not covered in this documentation, or for further assistance with the PORA Information Hub, please contact the development team at:</p>
+    <p>[Insert Your Contact Email Address or Support Channel Here]</p>
+
+</body>
+</html>
